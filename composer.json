@@ -22,11 +22,18 @@
         "ramsey/uuid": "*"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.14"
+        "orchestra/testbench": "^3.3",
+        "friendsofphp/php-cs-fixer": "^2.14",
+        "phpunit/phpunit": "^8.4"
     },
     "autoload": {
         "psr-4": {
             "HgaCreative\\MailgunWebhooks\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "HgaCreative\\MailgunWebhooks\\tests\\": "tests/"
         }
     },
     "extra": {

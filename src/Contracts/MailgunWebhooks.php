@@ -18,7 +18,7 @@ interface MailgunWebhooks
     * @param  Request  $request
     * @return \Illuminate\Http\Response
     */
-    public function handle(Request $request): Response;
+    public function handle(Request $request): JsonResponse;
 
     /**
     * Executes the relevant function for the event

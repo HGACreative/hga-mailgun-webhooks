@@ -23,10 +23,10 @@ class MailgunWebhooks implements Contracts\MailgunWebhooks
     /**
      * {@inheritdoc}
      */
-    public function handle(Request $request): Response
+    public function handle(Request $request): JsonResponse
     {
         if (is_null($this->emailTracking = $this->getEmailTracking($request))) {
-            return $this->getBadResponse();
+            return $this->getBadResponse($request);
         }
 
         $this->executeEvent(
@@ -34,10 +34,10 @@ class MailgunWebhooks implements Contracts\MailgunWebhooks
             $request->toArray()['event-data']['delivery-status']['code']
         );
 
-        if ($this->emailTracking->save()) {
-            return $this->getSuccessfulResponse();
+        if (!is_null($this->emailTracking) && $this->emailTracking->save()) {
+            return $this->getSuccessfulResponse($request);
         } else {
-            return $this->getBadResponse();
+            return $this->getBadResponse($request);
         }
     }
 
@@ -68,6 +68,9 @@ class MailgunWebhooks implements Contracts\MailgunWebhooks
             break;
             case "complained":
                 $this->complained();
+            break;
+            default:
+                $this->emailTracking = null;
             break;
         }
     }
