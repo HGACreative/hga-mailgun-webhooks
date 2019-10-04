@@ -1,0 +1,53 @@
+{
+    "name": "hgacreative/mailgun-webhooks",
+    "description": "Mailgun RESTful webhooks",
+    "keywords": [
+        "hga",
+        "hgacreative",
+        "mailgun",
+        "webhooks"
+    ],
+    "homepage": "https://digital.hgacreative.com/",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tallah Khan",
+            "email": "tallah.khan@hgacreative.com"
+        }
+    ],
+    "require": {
+        "php": "^7.1.3",
+        "ext-json": "*",
+        "ramsey/uuid": "*"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.14"
+    },
+    "autoload": {
+        "psr-4": {
+            "HgaCreative\\MailgunWebhooks\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.1-dev"
+        },
+        "laravel": {
+            "providers": [
+                "HgaCreative\\MailgunWebhooks\\MailgunWebhooksServiceProvider"
+            ]
+        }
+    },
+    "suggest": {
+        "laravelista/lumen-vendor-publish": "Required to publish the package config file in Lumen."
+    },
+    "scripts": {
+        "cs-fix": [
+            "php-cs-fixer --allow-risky=yes -v fix"
+        ],
+        "cs-check": [
+            "php-cs-fixer --allow-risky=yes -v --dry-run fix"
+        ]
+    }
+}
