@@ -7,7 +7,7 @@ namespace HgaCreative\MailgunWebhooks;
 use HgaCreative\MailgunWebhooks\Contracts\MailgunWebhooks;
 use Illuminate\Support\ServiceProvider;
 
-class StorageManagerServiceProvider extends ServiceProvider
+class MailgunWebhooksServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the service provider.
@@ -16,7 +16,7 @@ class StorageManagerServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->loadRoutesFrom(__DIR__.'/routes/web.php');
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
         if ($this->app->runningInConsole()) {
             $migrations = __DIR__.'/../database/migrations/';

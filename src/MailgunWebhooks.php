@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Storage;
 use HgaCreative\MailgunWebhooks\Models\EmailTracking;
 use HgaCreative\MailgunWebhooks\Requests\MailgunWebhookRequest;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
 
 class MailgunWebhooks implements Contracts\MailgunWebhooks
 {
@@ -163,7 +165,7 @@ class MailgunWebhooks implements Contracts\MailgunWebhooks
     /**
      * {@inheritdoc}
      */
-    private function getSuccessfulResponse($request): JsonResponse
+    public function getSuccessfulResponse(Request $request): JsonResponse
     {
         return response()->json([
              'status' => 'success',
@@ -175,7 +177,7 @@ class MailgunWebhooks implements Contracts\MailgunWebhooks
     /**
      * {@inheritdoc}
      */
-    private function getBadResponse($request): JsonResponse
+    public function getBadResponse(Request $request): JsonResponse
     {
         return response()->json([
              'status' => 'fail',

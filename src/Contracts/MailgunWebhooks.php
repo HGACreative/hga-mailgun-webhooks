@@ -7,6 +7,7 @@ namespace HgaCreative\MailgunWebhooks\Contracts;
 use HgaCreative\MailgunWebhooks\Models\EmailTracking;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
 
 interface MailgunWebhooks
 {
@@ -93,18 +94,18 @@ interface MailgunWebhooks
      * @param  Request $request
      * @return EmailTracking the model
      */
-    public function getEmailTracking($request): ?EmailTracking;
+    public function getEmailTracking(Request $request): ?EmailTracking;
 
     /**
      * Returns the request to be sent to the mail server
      * @return JsonResponse
      */
-    public function getSuccessfulResponse($request): JsonResponse;
+    public function getSuccessfulResponse(Request $request): JsonResponse;
 
     /**
      * Returns the request to be sent to the mail server
      * @return JsonResponse
      */
-    public function getBadResponse($request): JsonResponse;
+    public function getBadResponse(Request $request): JsonResponse;
 
 }
