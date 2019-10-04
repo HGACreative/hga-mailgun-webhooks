@@ -150,5 +150,4 @@ class MailgunWebhooksTest extends MailgunWebhooksTestCase
         $response = $this->post(route("webhooks.mailgun"), $this->data);
         $response->assertStatus(400);
     }
-
 }
