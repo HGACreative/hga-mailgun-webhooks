@@ -18,9 +18,13 @@ class MailgunWebhookRequest extends FormRequest
      */
     public function authorize()
     {
+        $allowed = [
+            "Symfony",
+            "localhost"
+        ];
+
         return (Str::startsWith(request()->headers->all()['user-agent'][0], 'mailgun/')
-                || request()->headers->all()['host'][0] == 'cheshireairportparking.test'
-                || request()->headers->all()['host'][0] == 'cpp.live');
+                || in_array(request()->headers->all()['host'][0], $allowed));
     }
 
     /**

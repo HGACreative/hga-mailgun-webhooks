@@ -26,9 +26,9 @@ class CreateEmailTrackingTable extends Migration
             $table->boolean('clicked')->default(0)->index();
             $table->unsignedInteger('clicks')->default(0)->index();
             $table->boolean('unsubscribed')->default(0)->index();
-            $table->boolean('complained')->after('temporary_fail')->default(0)->index();
-            $table->boolean('permanent_fail')->after('bounced')->default(0)->index();
-            $table->boolean('temporary_fail')->after('permanent_fail')->default(0)->index();
+            $table->boolean('complained')->default(0)->index();
+            $table->boolean('permanent_fail')->default(0)->index();
+            $table->boolean('temporary_fail')->default(0)->index();
             $table->timestamps();
         });
     }

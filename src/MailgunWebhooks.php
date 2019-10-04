@@ -21,21 +21,14 @@ class MailgunWebhooks implements Contracts\MailgunWebhooks
     protected $emailTracking;
 
     /**
-     * Set the email tracking model
-     * @param MailgunWebhookRequest $request [description]
-     */
-    public function __construct(MailgunWebhookRequest $request)
-    {
-        if (is_null($this->emailTracking = $this->getEmailTracking($request))) {
-            return $this->getBadResponse();
-        }
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function handle(Request $request): Response
     {
+        if (is_null($this->emailTracking = $this->getEmailTracking($request))) {
+            return $this->getBadResponse();
+        }
+
         $this->executeEvent(
             $request->toArray()['event-data']['event'],
             $request->toArray()['event-data']['delivery-status']['code']

@@ -1,6 +1,6 @@
 <?php
 
-namespace HgaCreative\MailgunWebhook\Traits;
+namespace HgaCreative\MailgunWebhooks\Traits;
 
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
